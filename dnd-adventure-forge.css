@@ -27,6 +27,12 @@
   box-sizing: border-box;
 }
 
+/* Global Focus Outline for Accessibility */
+*:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 2px;
+}
+
 body {
   background: var(--stone);
   font-family: 'EB Garamond', Georgia, serif;
@@ -324,6 +330,7 @@ h1 {
 
 .story-card:hover {
   transform: translateY(-5px) scale(1.025);
+  z-index: 10;
 }
 
 .card-inner {
@@ -892,16 +899,107 @@ h1 {
   border-radius: 3px;
 }
 
-@media(max-width:640px) {
+/* ══════════════════════════════════════════
+   RESPONSIVE LAYOUTS (Tablet & Mobile)
+══════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
   .cards-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
   }
 
   .panel-inner {
-    padding: 1rem;
+    padding: 1.25rem 1rem;
   }
 
+  .forge-box {
+    padding: 1.5rem 1rem;
+  }
+
+  .char-count-row {
+    gap: 0.75rem;
+    justify-content: space-around;
+  }
+
+  .forge-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+  }
+
+  header {
+    padding: 1.5rem 0.5rem 1rem;
+  }
+
+  .sub {
+    font-size: 0.85rem;
+  }
+
+  /* Tabs */
+  .tabs-scroll {
+    justify-content: flex-start;
+    padding: 0.5rem 0.25rem 0;
+  }
+
+  .tab-btn {
+    padding: 0.4rem 0.6rem;
+    min-height: 40px;
+  }
+
+  /* Panel Headers */
+  .panel-title {
+    font-size: 1.15rem;
+  }
+
+  .draw-controls {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .btn-panel,
+  .btn-draw,
+  .btn-forge,
+  .btn-forge-ghost {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Grids and Cards */
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+    gap: 0.6rem;
+  }
+
+  /* Spread UI */
+  .format-picker {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .format-btn {
+    min-height: 48px;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0.5rem 1rem;
+  }
+
+  .format-btn .fmt-icon {
+    margin-right: 0.5rem;
+  }
+
+  .format-btn .fmt-sub {
+    margin-left: auto;
   }
 }

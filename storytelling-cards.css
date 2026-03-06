@@ -104,6 +104,12 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Global Focus Outline for Accessibility */
+*:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 2px;
+}
+
 body {
   background: var(--void);
   font-family: 'Crimson Text', Georgia, serif;
@@ -425,6 +431,7 @@ h1 {
 
 .story-card:hover {
   transform: translateY(-5px) scale(1.025);
+  z-index: 10;
 }
 
 .story-card:active {
@@ -1113,4 +1120,133 @@ h1 {
 ::-webkit-scrollbar-thumb {
   background: rgba(107, 33, 168, 0.4);
   border-radius: 3px;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE LAYOUTS (Tablet & Mobile)
+══════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .panel-inner {
+    padding: 1.25rem 1rem;
+  }
+
+  .spread-box {
+    padding: 1.5rem 1rem;
+  }
+
+  .char-count-row {
+    gap: 0.75rem;
+    justify-content: space-around;
+  }
+
+  .spread-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  header {
+    padding: 1.5rem 0.5rem 1rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  /* Tabs */
+  .tabs-scroll {
+    justify-content: flex-start;
+    padding: 0.5rem 0.25rem 0;
+  }
+
+  .tab-btn {
+    padding: 0.4rem 0.6rem;
+    min-height: 40px;
+  }
+
+  /* Panel Headers */
+  .panel-title {
+    font-size: 1.15rem;
+  }
+
+  .panel-controls,
+  .draw-controls {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .btn-action,
+  .btn-draw,
+  .view-toggle {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .view-toggle button {
+    flex: 1;
+  }
+
+  /* Grids and Cards */
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+    gap: 0.6rem;
+  }
+
+  .story-card {
+    width: 100%;
+  }
+
+  /* Stack view */
+  .stack-container {
+    width: 140px;
+    height: 196px;
+  }
+
+  .stack-deck-icon {
+    font-size: 2.2rem;
+  }
+
+  /* Spread UI */
+  .format-picker {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .format-btn {
+    min-height: 48px;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0.5rem 1rem;
+  }
+
+  .format-btn .fmt-icon {
+    margin-right: 0.5rem;
+  }
+
+  .format-btn .fmt-sub {
+    margin-left: auto;
+  }
+
+  .btn-build,
+  .btn-clear2 {
+    width: 100%;
+  }
 }

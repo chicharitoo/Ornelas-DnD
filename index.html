@@ -139,7 +139,9 @@
             transition: all 0.3s ease;
         }
 
-        .forge-card:hover {
+        .forge-card:hover,
+        .forge-card:focus-visible {
+            outline: none;
             transform: translateY(-5px);
             border-color: var(--gold);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(200, 160, 32, 0.15);
@@ -157,7 +159,8 @@
             transition: transform 0.3s ease;
         }
 
-        .forge-card:hover .card-icon {
+        .forge-card:hover .card-icon,
+        .forge-card:focus-visible .card-icon {
             transform: scale(1.1) translateY(-5px);
         }
 
@@ -196,9 +199,72 @@
             box-shadow: 0 0 20px rgba(212, 98, 26, 0.2);
         }
 
-        .forge-card:hover .card-btn {
+        .forge-card:hover .card-btn,
+        .forge-card:focus-visible .card-btn {
             background: linear-gradient(135deg, var(--ember-glow), var(--ember));
             box-shadow: 0 0 30px rgba(212, 98, 26, 0.4);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .forge-card {
+                width: 100%;
+                max-width: 350px;
+                padding: 2rem 1.5rem;
+            }
+
+            .card-icon {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+
+            .card-title {
+                font-size: 1.35rem;
+            }
+
+            .card-desc {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            header {
+                margin-bottom: 2rem;
+            }
+
+            main {
+                padding: 0 1rem;
+                gap: 1.5rem;
+            }
+
+            .forge-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .card-icon {
+                font-size: 2.5rem;
+            }
+
+            .card-title {
+                font-size: 1.15rem;
+            }
+
+            .card-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -215,7 +281,7 @@
 
     <main>
         <a href="storytelling-cards (1).html" class="forge-card">
-            <div class="card-icon">🌌</div>
+            <div class="card-icon" aria-hidden="true">🌌</div>
             <h2 class="card-title">The Story Forge</h2>
             <p class="card-desc">Draw from 840 cards across 12 decks — a cosmic oracle for storytellers, writers, and
                 worldbuilders.</p>
@@ -223,7 +289,7 @@
         </a>
 
         <a href="dnd-adventure-forge.html" class="forge-card">
-            <div class="card-icon">⚔️</div>
+            <div class="card-icon" aria-hidden="true">⚔️</div>
             <h2 class="card-title">D&D Adventure Forge</h2>
             <p class="card-desc">Forge epic campaigns, legendary characters, and unforgiving encounters with 840
                 mystical cards.</p>
