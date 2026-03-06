@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Forges</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;900&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --stone: #0f0d0a;
+            --parch-dim: #c8b888;
+            --ember: #d4621a;
+            --ember-glow: #f07030;
+            --gold: #c8a020;
+            --gold-light: #e8c040;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--stone);
+            font-family: 'EB Garamond', Georgia, serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-image:
+                radial-gradient(ellipse at 15% 10%, rgba(212, 98, 26, 0.06) 0%, transparent 45%),
+                radial-gradient(ellipse at 85% 90%, rgba(139, 26, 26, 0.07) 0%, transparent 45%),
+                radial-gradient(ellipse at 50% 50%, rgba(200, 160, 32, 0.03) 0%, transparent 60%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='80' height='80' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .header-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-ornament::before,
+        .header-ornament::after {
+            content: '';
+            flex: 1;
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .header-ornament-gem {
+            color: var(--ember);
+            font-size: 1.4rem;
+            text-shadow: 0 0 20px rgba(212, 98, 26, 0.8);
+            animation: gemPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes gemPulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                text-shadow: 0 0 20px rgba(212, 98, 26, 0.8);
+            }
+
+            50% {
+                opacity: 0.7;
+                text-shadow: 0 0 40px rgba(212, 98, 26, 0.4);
+            }
+        }
+
+        h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900;
+            color: var(--gold-light);
+            letter-spacing: 0.06em;
+            text-shadow:
+                0 0 60px rgba(200, 160, 32, 0.5),
+                0 0 20px rgba(200, 160, 32, 0.3),
+                0 3px 6px rgba(0, 0, 0, 0.9);
+            line-height: 1.15;
+        }
+
+        .subtitle {
+            font-family: 'EB Garamond', serif;
+            font-style: italic;
+            color: var(--parch-dim);
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            letter-spacing: 0.06em;
+            opacity: 0.75;
+        }
+
+        main {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0 2rem;
+            max-width: 1200px;
+        }
+
+        .forge-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            width: 320px;
+            padding: 3rem 2rem;
+            background: rgba(200, 160, 32, 0.02);
+            border: 1px solid rgba(200, 160, 32, 0.25);
+            border-radius: 8px;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+        }
+
+        .forge-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 8px;
+            background: radial-gradient(ellipse at 50% 0%, rgba(200, 160, 32, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .forge-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(200, 160, 32, 0.15);
+            background: rgba(200, 160, 32, 0.05);
+        }
+
+        .forge-card:hover::before {
+            background: radial-gradient(ellipse at 50% 0%, rgba(212, 98, 26, 0.15) 0%, transparent 70%);
+        }
+
+        .card-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 10px rgba(200, 160, 32, 0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .forge-card:hover .card-icon {
+            transform: scale(1.1) translateY(-5px);
+        }
+
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(200, 160, 32, 0.3);
+        }
+
+        .card-desc {
+            font-family: 'EB Garamond', serif;
+            color: rgba(240, 230, 200, 0.6);
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .card-btn {
+            margin-top: 2rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.75rem 2rem;
+            border: 1px solid var(--ember);
+            background: linear-gradient(135deg, var(--ember), #a04010);
+            color: #f0e6c8;
+            border-radius: 4px;
+            transition: all 0.2s;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 20px rgba(212, 98, 26, 0.2);
+        }
+
+        .forge-card:hover .card-btn {
+            background: linear-gradient(135deg, var(--ember-glow), var(--ember));
+            box-shadow: 0 0 30px rgba(212, 98, 26, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-ornament">
+            <div class="header-ornament-gem">✦</div>
+        </div>
+        <h1>The Forges</h1>
+        <p class="subtitle">Choose your realm of creation</p>
+    </header>
+
+    <main>
+        <a href="storytelling-cards (1).html" class="forge-card">
+            <div class="card-icon">🌌</div>
+            <h2 class="card-title">The Story Forge</h2>
+            <p class="card-desc">Draw from 840 cards across 12 decks — a cosmic oracle for storytellers, writers, and
+                worldbuilders.</p>
+            <div class="card-btn">Enter Forge</div>
+        </a>
+
+        <a href="dnd-adventure-forge.html" class="forge-card">
+            <div class="card-icon">⚔️</div>
+            <h2 class="card-title">D&D Adventure Forge</h2>
+            <p class="card-desc">Forge epic campaigns, legendary characters, and unforgiving encounters with 840
+                mystical cards.</p>
+            <div class="card-btn">Enter Forge</div>
+        </a>
+    </main>
+
+</body>
+
+</html>
